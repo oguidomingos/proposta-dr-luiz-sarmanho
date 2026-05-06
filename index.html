@@ -80,6 +80,20 @@ body{font-family:'Inter',sans-serif;color:var(--text-primary);background:var(--w
   background:var(--white);border-radius:var(--radius);overflow:hidden;
   box-shadow:0 2px 16px rgba(0,0,0,0.06);
 }
+.lp-content.embed{padding:0;background:#dfe7f3}
+.lp-frame{
+  display:block;width:100%;height:780px;border:0;background:var(--white);
+}
+.lp-frame-note{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  padding:18px 22px;background:var(--white);border-top:1px solid rgba(0,0,0,0.08);
+}
+.lp-frame-note p{font-size:0.85rem;color:var(--text-secondary)}
+.lp-frame-note a{
+  display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;
+  background:var(--blue-deeper);color:var(--white);text-decoration:none;font-weight:600;font-size:0.85rem;
+}
+.lp-frame-note a:hover{background:var(--blue-dark)}
 .lp-hero{
   background:linear-gradient(135deg,var(--blue-deeper),var(--blue));
   padding:48px 32px;color:var(--white);text-align:center;position:relative;
@@ -291,6 +305,7 @@ body{font-family:'Inter',sans-serif;color:var(--text-primary);background:var(--w
   .hero-stats{gap:24px}
   .hero-stat .num{font-size:2rem}
   .section{padding:60px 0}
+  .lp-frame{height:620px}
   .lp-services{grid-template-columns:1fr 1fr}
   .lp-trust{gap:24px}
   .color-grid{grid-template-columns:repeat(3,1fr)}
@@ -299,6 +314,7 @@ body{font-family:'Inter',sans-serif;color:var(--text-primary);background:var(--w
   .steps-timeline{padding-left:36px}
 }
 @media(max-width:480px){
+  .lp-frame{height:420px}
   .lp-services{grid-template-columns:1fr}
   .posts-grid{grid-template-columns:1fr}
 }
@@ -352,59 +368,24 @@ body{font-family:'Inter',sans-serif;color:var(--text-primary);background:var(--w
 <section class="section" id="lp">
   <div class="container">
     <h2 class="section-title">Preview do Site de Captacao</h2>
-    <p class="section-sub">Esta e a primeira impressao que a Pulso constroi: uma pagina clara, forte e pronta para transformar busca em agendamento.</p>
+    <p class="section-sub">Agora o preview mostra o site real ja publicado no DES-368, em vez de um mock. Isso deixa a proposta mais concreta na hora do fechamento.</p>
 
     <div class="lp-preview-wrapper animate">
       <div class="lp-browser-bar">
         <div class="lp-dots"><div class="lp-dot r"></div><div class="lp-dot y"></div><div class="lp-dot g"></div></div>
-        <div class="lp-url">drluizsarmanho.com.br</div>
+        <div class="lp-url">https://oguidomingos.github.io/des-368-ortopedista-luiz/</div>
       </div>
-      <div class="lp-content">
-        <div class="lp-hero">
-          <h2>Dr. Luiz Sarmanho<br><span>Ortopedista &amp; Especialista em Quadril e Dor</span></h2>
-          <p>10+ anos de experiencia | Clinica Unique &mdash; Zona Sul, Brasilia<br>Convenios AMHP | Particular</p>
-          <a href="#" class="cta-btn" onclick="return false">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-            Agendar Consulta
-          </a>
-        </div>
-
-        <div class="lp-services">
-          <div class="lp-service">
-            <div class="lp-service-icon">&#129657;</div>
-            <h4>Ortopedia</h4>
-            <p>Diagnostico e tratamento de lesoes musculoesqueleticas</p>
-          </div>
-          <div class="lp-service">
-            <div class="lp-service-icon">&#128170;</div>
-            <h4>Quadril</h4>
-            <p>Especialista em patologias e cirurgias do quadril</p>
-          </div>
-          <div class="lp-service">
-            <div class="lp-service-icon">&#9889;</div>
-            <h4>Intervencao e Dor</h4>
-            <p>Procedimentos minimamente invasivos para alivio da dor</p>
-          </div>
-          <div class="lp-service">
-            <div class="lp-service-icon">&#127973;</div>
-            <h4>Traumatologia</h4>
-            <p>Urgencias e fraturas com experiencia de 10+ anos</p>
-          </div>
-        </div>
-
-        <div class="lp-trust">
-          <div class="lp-trust-item"><div class="big">10+</div><div class="small">Anos de Experiencia</div></div>
-          <div class="lp-trust-item"><div class="big">HRT</div><div class="small">Hospital Regional</div></div>
-          <div class="lp-trust-item"><div class="big">AMHP</div><div class="small">Convenios Aceitos</div></div>
-          <div class="lp-trust-item"><div class="big">4</div><div class="small">Especialidades</div></div>
-        </div>
-
-        <div class="lp-cta-bar">
-          Pronto para cuidar da sua saude?
-          <a href="#" onclick="return false">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-            WhatsApp
-          </a>
+      <div class="lp-content embed">
+        <iframe
+          class="lp-frame"
+          src="https://oguidomingos.github.io/des-368-ortopedista-luiz/"
+          title="Preview real do site do Dr. Luiz"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+        ></iframe>
+        <div class="lp-frame-note">
+          <p>Preview real do site publicado no DES-368. Se o embed nao carregar no navegador do cliente, o link externo continua disponivel logo abaixo.</p>
+          <a href="https://oguidomingos.github.io/des-368-ortopedista-luiz/" target="_blank" rel="noreferrer">Abrir site em nova aba</a>
         </div>
       </div>
     </div>
