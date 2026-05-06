@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Personalizada — Dr. Luiz Sarmanho | Pulso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1565c0;--blue-dark:#0d47a1;--blue-deeper:#0a3470;
+  --gold:#e6b25d;--gold-dark:#c48d2a;--gold-light:#fef3db;
+  --white:#ffffff;--bg-secondary:#e3f0ff;--bg-tertiary:#f3f4f6;
+  --text-primary:#111827;--text-secondary:#4b5563;--text-muted:#9ca3af;
+  --radius:12px;--shadow:0 4px 24px rgba(0,0,0,0.08);
+  --shadow-lg:0 12px 48px rgba(0,0,0,0.12);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',sans-serif;color:var(--text-primary);background:var(--white);line-height:1.6;overflow-x:hidden}
+
+/* Hero */
+.hero{
+  background:linear-gradient(135deg,var(--blue-deeper) 0%,var(--blue-dark) 40%,var(--blue) 100%);
+  color:var(--white);padding:80px 24px 100px;text-align:center;position:relative;overflow:hidden;
+}
+.hero::after{
+  content:'';position:absolute;bottom:-2px;left:0;right:0;height:80px;
+  background:var(--white);clip-path:ellipse(55% 100% at 50% 100%);
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,0.12);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,0.2);border-radius:100px;
+  padding:8px 20px;font-size:13px;font-weight:500;letter-spacing:0.5px;
+  text-transform:uppercase;margin-bottom:32px;color:var(--gold);
+}
+.hero h1{
+  font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);
+  font-weight:700;line-height:1.15;margin-bottom:16px;
+}
+.hero h1 span{color:var(--gold)}
+.hero-sub{font-size:clamp(1rem,2vw,1.25rem);opacity:0.85;max-width:600px;margin:0 auto 40px;font-weight:300}
+.hero-stats{
+  display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin-top:16px;
+}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:2.5rem;font-weight:800;color:var(--gold);line-height:1}
+.hero-stat .label{font-size:0.8rem;opacity:0.7;margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+
+/* Container */
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* Section */
+.section{padding:80px 0}
+.section-title{
+  font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.25rem);
+  text-align:center;margin-bottom:12px;color:var(--blue-deeper);
+}
+.section-sub{text-align:center;color:var(--text-secondary);font-size:1rem;max-width:600px;margin:0 auto 48px}
+
+/* LP Preview */
+.lp-preview-wrapper{
+  background:var(--bg-tertiary);border-radius:20px;padding:32px;
+  box-shadow:var(--shadow-lg);position:relative;overflow:hidden;
+}
+.lp-browser-bar{
+  display:flex;align-items:center;gap:8px;margin-bottom:20px;padding-bottom:16px;
+  border-bottom:1px solid rgba(0,0,0,0.06);
+}
+.lp-dots{display:flex;gap:6px}
+.lp-dot{width:12px;height:12px;border-radius:50%}
+.lp-dot.r{background:#ff5f57}.lp-dot.y{background:#febc2e}.lp-dot.g{background:#28c840}
+.lp-url{
+  flex:1;background:var(--white);border-radius:8px;padding:8px 16px;
+  font-size:13px;color:var(--text-muted);font-family:monospace;
+}
+.lp-content{
+  background:var(--white);border-radius:var(--radius);overflow:hidden;
+  box-shadow:0 2px 16px rgba(0,0,0,0.06);
+}
+.lp-hero{
+  background:linear-gradient(135deg,var(--blue-deeper),var(--blue));
+  padding:48px 32px;color:var(--white);text-align:center;position:relative;
+}
+.lp-hero::before{
+  content:'';position:absolute;top:0;right:0;width:200px;height:200px;
+  background:radial-gradient(circle,rgba(230,178,93,0.15) 0%,transparent 70%);
+}
+.lp-hero h2{font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:8px}
+.lp-hero h2 span{color:var(--gold)}
+.lp-hero p{opacity:0.8;font-size:0.95rem;margin-bottom:24px}
+.lp-hero .cta-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--gold);color:var(--blue-deeper);
+  padding:14px 32px;border-radius:100px;font-weight:700;font-size:0.95rem;
+  text-decoration:none;transition:all 0.3s;
+}
+.lp-hero .cta-btn:hover{background:var(--gold-dark);transform:translateY(-2px)}
+
+.lp-services{padding:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.lp-service{
+  background:var(--bg-secondary);border-radius:var(--radius);padding:24px;text-align:center;
+  border:1px solid rgba(21,101,192,0.08);
+}
+.lp-service-icon{font-size:2rem;margin-bottom:12px}
+.lp-service h4{font-size:0.95rem;color:var(--blue-dark);margin-bottom:6px}
+.lp-service p{font-size:0.8rem;color:var(--text-secondary)}
+
+.lp-trust{
+  padding:24px 32px;background:var(--gold-light);display:flex;
+  justify-content:center;gap:40px;flex-wrap:wrap;
+}
+.lp-trust-item{text-align:center}
+.lp-trust-item .big{font-size:1.5rem;font-weight:800;color:var(--blue-deeper)}
+.lp-trust-item .small{font-size:0.75rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.5px}
+
+.lp-cta-bar{
+  padding:24px 32px;background:var(--blue-deeper);text-align:center;
+  color:var(--white);font-size:0.95rem;
+}
+.lp-cta-bar a{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#25D366;color:var(--white);padding:12px 28px;
+  border-radius:100px;font-weight:600;text-decoration:none;margin-left:16px;
+  transition:all 0.3s;
+}
+.lp-cta-bar a:hover{background:#1da851;transform:translateY(-1px)}
+
+/* MIV */
+.miv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px}
+.miv-card{
+  background:var(--white);border-radius:var(--radius);padding:32px;
+  box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.04);
+}
+.miv-card h3{font-size:1.1rem;color:var(--blue-deeper);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.miv-card h3::before{content:'';width:4px;height:20px;background:var(--gold);border-radius:2px}
+
+/* Color palette */
+.color-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.color-swatch{
+  border-radius:12px;padding:20px 12px 12px;text-align:center;
+  color:var(--white);font-size:0.7rem;font-weight:600;letter-spacing:0.5px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);position:relative;min-height:90px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+}
+.color-swatch .hex{font-family:monospace;font-size:0.75rem;opacity:0.9}
+.color-swatch .name{font-size:0.65rem;opacity:0.7;margin-bottom:4px}
+
+/* Typography */
+.typo-sample{margin-bottom:16px}
+.typo-sample .font-name{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.typo-sample.heading .text{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--blue-deeper)}
+.typo-sample.body .text{font-family:'Inter',sans-serif;font-size:1rem;color:var(--text-primary)}
+
+/* Logo mock */
+.logo-mock{
+  background:linear-gradient(135deg,var(--blue-deeper),var(--blue));
+  border-radius:var(--radius);padding:40px;text-align:center;color:var(--white);
+}
+.logo-mock .icon{
+  width:80px;height:80px;border:3px solid var(--gold);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 16px;
+  font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;
+  color:var(--gold);
+}
+.logo-mock .name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:600;margin-bottom:4px}
+.logo-mock .tagline{font-size:0.8rem;opacity:0.7;letter-spacing:2px;text-transform:uppercase}
+
+/* Posts grid */
+.posts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.post-card{
+  background:var(--white);border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.04);
+  transition:transform 0.3s,box-shadow 0.3s;
+}
+.post-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.post-visual{
+  aspect-ratio:1;position:relative;overflow:hidden;
+}
+.post-visual .bg{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;padding:32px;text-align:center;
+}
+.post-visual .bg.gradient-1{background:linear-gradient(135deg,var(--blue-deeper),var(--blue))}
+.post-visual .bg.gradient-2{background:linear-gradient(135deg,#0a3470,#1976d2)}
+.post-visual .bg.gradient-3{background:linear-gradient(135deg,var(--blue),#42a5f5)}
+.post-visual .bg.gradient-4{background:linear-gradient(135deg,#0d47a1,var(--blue))}
+.post-visual .bg.gradient-5{background:linear-gradient(135deg,#1a237e,var(--blue-deeper))}
+.post-visual .bg.gradient-6{background:linear-gradient(135deg,var(--blue-deeper),#1565c0,#42a5f5)}
+
+.post-visual .post-icon{font-size:3rem;margin-bottom:16px}
+.post-visual h3{
+  font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--white);
+  margin-bottom:8px;line-height:1.3;
+}
+.post-visual p{font-size:0.8rem;color:rgba(255,255,255,0.75);line-height:1.5}
+.post-visual .gold-accent{
+  position:absolute;bottom:16px;left:16px;right:16px;
+  height:3px;background:var(--gold);border-radius:2px;
+}
+.post-visual .badge{
+  position:absolute;top:16px;right:16px;
+  background:var(--gold);color:var(--blue-deeper);
+  padding:4px 12px;border-radius:100px;font-size:0.7rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.5px;
+}
+.post-info{padding:16px 20px}
+.post-info .type{font-size:0.7rem;color:var(--gold-dark);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.post-info .caption{font-size:0.85rem;color:var(--text-secondary);line-height:1.5}
+
+/* Onboarding steps */
+.steps-timeline{position:relative;padding-left:40px}
+.steps-timeline::before{
+  content:'';position:absolute;left:15px;top:0;bottom:0;
+  width:2px;background:linear-gradient(to bottom,var(--gold),var(--blue));
+}
+.step-item{position:relative;margin-bottom:24px;padding:20px 24px;
+  background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);
+  border-left:3px solid var(--gold);
+}
+.step-item::before{
+  content:attr(data-step);position:absolute;left:-40px;top:20px;
+  width:30px;height:30px;background:var(--blue);color:var(--white);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:0.75rem;font-weight:700;border:3px solid var(--white);
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:1;
+}
+.step-item h4{font-size:0.95rem;color:var(--blue-deeper);margin-bottom:4px}
+.step-item p{font-size:0.8rem;color:var(--text-secondary)}
+.step-item .agent{
+  display:inline-block;margin-top:8px;font-size:0.7rem;
+  background:var(--bg-secondary);color:var(--blue);
+  padding:2px 10px;border-radius:100px;font-weight:500;
+}
+
+/* Pricing */
+.pricing-section{background:var(--bg-secondary);border-radius:20px;padding:48px 32px}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.pricing-card{
+  background:var(--white);border-radius:var(--radius);padding:32px;
+  text-align:center;border:2px solid transparent;
+  transition:all 0.3s;position:relative;
+}
+.pricing-card.recommended{border-color:var(--gold);box-shadow:var(--shadow-lg)}
+.pricing-card.recommended::before{
+  content:'RECOMENDADO';position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+  background:var(--gold);color:var(--blue-deeper);padding:4px 20px;
+  border-radius:100px;font-size:0.7rem;font-weight:700;letter-spacing:1px;
+}
+.pricing-card h3{font-size:1.25rem;color:var(--blue-deeper);margin-bottom:8px}
+.pricing-card .price{font-size:2rem;font-weight:800;color:var(--blue);margin-bottom:4px}
+.pricing-card .price span{font-size:0.9rem;font-weight:400;color:var(--text-muted)}
+.pricing-card .setup{font-size:0.85rem;color:var(--text-secondary);margin-bottom:20px}
+.pricing-card ul{text-align:left;list-style:none;margin-bottom:24px}
+.pricing-card li{
+  padding:8px 0;font-size:0.85rem;color:var(--text-secondary);
+  border-bottom:1px solid var(--bg-tertiary);display:flex;align-items:center;gap:8px;
+}
+.pricing-card li::before{content:'✓';color:var(--gold);font-weight:700}
+.pricing-card li.no::before{content:'—';color:var(--text-muted)}
+.pricing-card .btn{
+  display:inline-block;padding:12px 32px;border-radius:100px;font-weight:600;
+  text-decoration:none;font-size:0.9rem;transition:all 0.3s;
+}
+.pricing-card .btn.primary{background:var(--blue);color:var(--white)}
+.pricing-card .btn.primary:hover{background:var(--blue-dark);transform:translateY(-2px)}
+.pricing-card .btn.gold{background:var(--gold);color:var(--blue-deeper)}
+.pricing-card .btn.gold:hover{background:var(--gold-dark);transform:translateY(-2px)}
+.pricing-card .btn.outline{border:2px solid var(--blue);color:var(--blue)}
+.pricing-card .btn.outline:hover{background:var(--blue);color:var(--white)}
+
+/* Footer */
+.footer{
+  background:var(--blue-deeper);color:var(--white);padding:48px 24px;text-align:center;
+}
+.footer .logo-text{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--gold);margin-bottom:8px}
+.footer p{opacity:0.6;font-size:0.85rem}
+.footer .cta-final{
+  margin-top:24px;display:inline-flex;align-items:center;gap:8px;
+  background:var(--gold);color:var(--blue-deeper);padding:14px 36px;
+  border-radius:100px;font-weight:700;text-decoration:none;font-size:1rem;
+  transition:all 0.3s;
+}
+.footer .cta-final:hover{background:var(--gold-dark);transform:translateY(-2px)}
+
+/* Responsive */
+@media(max-width:768px){
+  .hero{padding:60px 20px 80px}
+  .hero-stats{gap:24px}
+  .hero-stat .num{font-size:2rem}
+  .section{padding:60px 0}
+  .lp-services{grid-template-columns:1fr 1fr}
+  .lp-trust{gap:24px}
+  .color-grid{grid-template-columns:repeat(3,1fr)}
+  .posts-grid{grid-template-columns:1fr 1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .steps-timeline{padding-left:36px}
+}
+@media(max-width:480px){
+  .lp-services{grid-template-columns:1fr}
+  .posts-grid{grid-template-columns:1fr}
+}
+
+/* Animations */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.animate{animation:fadeUp 0.6s ease forwards;opacity:0}
+.delay-1{animation-delay:0.1s}.delay-2{animation-delay:0.2s}.delay-3{animation-delay:0.3s}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">&#9670; Proposta Personalizada Pulso</div>
+    <h1>Dr. Luiz Sarmanho<br><span>Transformar Autoridade Medica em Demanda Real</span></h1>
+    <p class="hero-sub">Proposta comercial inspirada na estrutura Hanna/Ornato, adaptada para a sua especialidade e aplicada com a identidade visual aprovada da sua marca.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">10+</div><div class="label">Anos de Experiencia</div></div>
+      <div class="hero-stat"><div class="num">1/10</div><div class="label">Score Digital Atual</div></div>
+      <div class="hero-stat"><div class="num">2</div><div class="label">Periodos/Semana a Preencher</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNOSTICO -->
+<section class="section" id="diagnostico">
+  <div class="container">
+    <h2 class="section-title">O Cenario Hoje</h2>
+    <p class="section-sub">O Dr. Luiz ja tem bagagem clinica, especialidade e estrutura. O gargalo nao e tecnico. E visibilidade, posicionamento e captura da demanda certa.</p>
+
+    <div class="miv-grid">
+      <div class="miv-card animate">
+        <h3>Problema 1</h3>
+        <p style="color:var(--text-secondary)">Hoje o paciente encontra a Clinica Unique, mas nao encontra o Dr. Luiz como especialista em quadril e dor. Isso reduz percepcao de autoridade propria e gera dependencia da marca da clinica.</p>
+      </div>
+      <div class="miv-card animate delay-1">
+        <h3>Problema 2</h3>
+        <p style="color:var(--text-secondary)">Sem Google Meu Negocio, landing page e ativo organico minimo, o Dr. Luiz praticamente nao disputa a demanda local de alta intencao em Brasilia.</p>
+      </div>
+      <div class="miv-card animate delay-2">
+        <h3>Problema 3</h3>
+        <p style="color:var(--text-secondary)">A agenda ainda esta no inicio e existe uma janela rara para ocupar os dois periodos semanais com previsibilidade antes de depender apenas de boca a boca ou encaminhamento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LP PREVIEW -->
+<section class="section" id="lp">
+  <div class="container">
+    <h2 class="section-title">Preview do Site de Captacao</h2>
+    <p class="section-sub">Esta e a primeira impressao que a Pulso constroi: uma pagina clara, forte e pronta para transformar busca em agendamento.</p>
+
+    <div class="lp-preview-wrapper animate">
+      <div class="lp-browser-bar">
+        <div class="lp-dots"><div class="lp-dot r"></div><div class="lp-dot y"></div><div class="lp-dot g"></div></div>
+        <div class="lp-url">drluizsarmanho.com.br</div>
+      </div>
+      <div class="lp-content">
+        <div class="lp-hero">
+          <h2>Dr. Luiz Sarmanho<br><span>Ortopedista &amp; Especialista em Quadril e Dor</span></h2>
+          <p>10+ anos de experiencia | Clinica Unique &mdash; Zona Sul, Brasilia<br>Convenios AMHP | Particular</p>
+          <a href="#" class="cta-btn" onclick="return false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+            Agendar Consulta
+          </a>
+        </div>
+
+        <div class="lp-services">
+          <div class="lp-service">
+            <div class="lp-service-icon">&#129657;</div>
+            <h4>Ortopedia</h4>
+            <p>Diagnostico e tratamento de lesoes musculoesqueleticas</p>
+          </div>
+          <div class="lp-service">
+            <div class="lp-service-icon">&#128170;</div>
+            <h4>Quadril</h4>
+            <p>Especialista em patologias e cirurgias do quadril</p>
+          </div>
+          <div class="lp-service">
+            <div class="lp-service-icon">&#9889;</div>
+            <h4>Intervencao e Dor</h4>
+            <p>Procedimentos minimamente invasivos para alivio da dor</p>
+          </div>
+          <div class="lp-service">
+            <div class="lp-service-icon">&#127973;</div>
+            <h4>Traumatologia</h4>
+            <p>Urgencias e fraturas com experiencia de 10+ anos</p>
+          </div>
+        </div>
+
+        <div class="lp-trust">
+          <div class="lp-trust-item"><div class="big">10+</div><div class="small">Anos de Experiencia</div></div>
+          <div class="lp-trust-item"><div class="big">HRT</div><div class="small">Hospital Regional</div></div>
+          <div class="lp-trust-item"><div class="big">AMHP</div><div class="small">Convenios Aceitos</div></div>
+          <div class="lp-trust-item"><div class="big">4</div><div class="small">Especialidades</div></div>
+        </div>
+
+        <div class="lp-cta-bar">
+          Pronto para cuidar da sua saude?
+          <a href="#" onclick="return false">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MIV BASICO -->
+<section class="section" id="miv" style="background:var(--bg-tertiary)">
+  <div class="container">
+    <h2 class="section-title">Identidade Visual Aplicada</h2>
+    <p class="section-sub">A proposta usa a paleta e a linguagem visual aprovadas para o Dr. Luiz: azul medico para autoridade, dourado para credibilidade premium e tipografia editorial para assinatura pessoal.</p>
+
+    <div class="miv-grid">
+      <!-- Colors -->
+      <div class="miv-card animate">
+        <h3>Paleta de Cores</h3>
+        <div class="color-grid">
+          <div class="color-swatch" style="background:#0a3470"><span class="name">Blue Deep</span><span class="hex">#0A3470</span></div>
+          <div class="color-swatch" style="background:#1565c0"><span class="name">Blue Primary</span><span class="hex">#1565C0</span></div>
+          <div class="color-swatch" style="background:#e6b25d;color:#0a3470"><span class="name">Gold Accent</span><span class="hex">#E6B25D</span></div>
+          <div class="color-swatch" style="background:#0d47a1"><span class="name">Blue Dark</span><span class="hex">#0D47A1</span></div>
+          <div class="color-swatch" style="background:#e3f0ff;color:#0a3470"><span class="name">Blue Light</span><span class="hex">#E3F0FF</span></div>
+          <div class="color-swatch" style="background:#111827"><span class="name">Text Dark</span><span class="hex">#111827</span></div>
+        </div>
+      </div>
+
+      <!-- Typography -->
+      <div class="miv-card animate delay-1">
+        <h3>Tipografia</h3>
+        <div class="typo-sample heading">
+          <div class="font-name">Playfair Display &mdash; Titulos</div>
+          <div class="text">Dr. Luiz Sarmanho</div>
+        </div>
+        <div class="typo-sample body">
+          <div class="font-name">Inter &mdash; Corpo de texto</div>
+          <div class="text">Ortopedista e especialista em quadril e intervencao para dor. 10+ anos de experiencia no Hospital Regional de Taguatinga.</div>
+        </div>
+        <div style="margin-top:20px;padding:16px;background:var(--bg-secondary);border-radius:8px">
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:8px">HIERARQUIA</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--blue-deeper)">H1 &mdash; Headline Principal</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--blue-dark)">H2 &mdash; Subtitulo</div>
+          <div style="font-family:'Inter',sans-serif;font-size:0.95rem;font-weight:600;color:var(--text-primary)">H3 &mdash; Secao</div>
+          <div style="font-family:'Inter',sans-serif;font-size:0.85rem;color:var(--text-secondary)">Body &mdash; Texto corrido</div>
+        </div>
+      </div>
+
+      <!-- Logo -->
+      <div class="miv-card animate delay-2">
+        <h3>Marca Pessoal</h3>
+        <div class="logo-mock">
+          <div class="icon">LS</div>
+          <div class="name">Dr. Luiz Sarmanho</div>
+          <div class="tagline">Ortopedia &bull; Quadril &bull; Dor</div>
+        </div>
+        <div style="margin-top:20px;padding:16px;background:var(--bg-secondary);border-radius:8px">
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:8px">APLICACOES</div>
+          <div style="font-size:0.85rem;color:var(--text-secondary)">
+            &#9679; Cartao de visita<br>
+            &#9679; Receituario<br>
+            &#9679; Instagram profissional<br>
+            &#9679; Site / Landing Page<br>
+            &#9679; Assinatura de email
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POSTS PREVIEW -->
+<section class="section" id="posts">
+  <div class="container">
+    <h2 class="section-title">Preview dos Posts</h2>
+    <p class="section-sub">Exemplos do tipo de criativo que o Dr. Luiz ja entra recebendo: apresentacao, educacao, especialidade, estrutura e CTA de agenda.</p>
+
+    <div class="posts-grid">
+      <!-- Post 1 -->
+      <div class="post-card animate">
+        <div class="post-visual">
+          <div class="bg gradient-1">
+            <span class="badge">Autoridade</span>
+            <div class="post-icon">&#129657;</div>
+            <h3>10+ Anos Cuidando de Voce</h3>
+            <p>Experiencia que faz diferenca no seu tratamento</p>
+            <div class="gold-accent"></div>
+          </div>
+        </div>
+        <div class="post-info">
+          <div class="type">Post 1 &mdash; Apresentacao</div>
+          <div class="caption">Conheca o Dr. Luiz Sarmanho. 10+ anos de experiencia em ortopedia, traumatologia e tratamento da dor.</div>
+        </div>
+      </div>
+
+      <!-- Post 2 -->
+      <div class="post-card animate delay-1">
+        <div class="post-visual">
+          <div class="bg gradient-2">
+            <span class="badge">Educativo</span>
+            <div class="post-icon">&#128161;</div>
+            <h3>Dor no Quadril? Saiba Quando Procurar um Especialista</h3>
+            <p>Sinais que voce nao deve ignorar</p>
+            <div class="gold-accent"></div>
+          </div>
+        </div>
+        <div class="post-info">
+          <div class="type">Post 2 &mdash; Conteudo Educativo</div>
+          <div class="caption">Sabia que a dor no quadril pode indicar problemas serios? Descubra os 5 sinais de alerta.</div>
+        </div>
+      </div>
+
+      <!-- Post 3 -->
+      <div class="post-card animate delay-2">
+        <div class="post-visual">
+          <div class="bg gradient-3">
+            <span class="badge">Especialidade</span>
+            <div class="post-icon">&#128170;</div>
+            <h3>Tratamento de Quadril na Clinica Unique</h3>
+            <p>Procedimentos minimamente invasivos</p>
+            <div class="gold-accent"></div>
+          </div>
+        </div>
+        <div class="post-info">
+          <div class="type">Post 3 &mdash; Servico</div>
+          <div class="caption">Tratamento especializado de quadril com tecnicas minimamente invasivas. Agende sua consulta.</div>
+        </div>
+      </div>
+
+      <!-- Post 4 -->
+      <div class="post-card animate delay-3">
+        <div class="post-visual">
+          <div class="bg gradient-4">
+            <span class="badge">Clinica</span>
+            <div class="post-icon">&#127973;</div>
+            <h3>Clinica Unique &mdash; Zona Sul, Brasilia</h3>
+            <p>Estrutura completa para seu atendimento</p>
+            <div class="gold-accent"></div>
+          </div>
+        </div>
+        <div class="post-info">
+          <div class="type">Post 4 &mdash; Infraestrutura</div>
+          <div class="caption">Atendimento de excelencia na Clinica Unique. Zona Sul de Brasilia, facil acesso, estacionamento.</div>
+        </div>
+      </div>
+
+      <!-- Post 5 -->
+      <div class="post-card animate">
+        <div class="post-visual">
+          <div class="bg gradient-5">
+            <span class="badge">Intervencao</span>
+            <div class="post-icon">&#9889;</div>
+            <h3>Bloqueio Articular Guiado: Alivio Preciso da Dor</h3>
+            <p>Tecnologia a servico do seu bem-estar</p>
+            <div class="gold-accent"></div>
+          </div>
+        </div>
+        <div class="post-info">
+          <div class="type">Post 5 &mdash; Procedimento</div>
+          <div class="caption">Procedimentos guiados por imagem para tratamento preciso da dor. Recuperacao rapida, sem internacao.</div>
+        </div>
+      </div>
+
+      <!-- Post 6 -->
+      <div class="post-card animate delay-1">
+        <div class="post-visual">
+          <div class="bg gradient-6">
+            <span class="badge">CTA</span>
+            <div class="post-icon">&#128197;</div>
+            <h3>Agenda Aberta: Quarta e Quinta</h3>
+            <p>Particular &amp; Convenio AMHP</p>
+            <div class="gold-accent"></div>
+          </div>
+        </div>
+        <div class="post-info">
+          <div class="type">Post 6 &mdash; Agendamento</div>
+          <div class="caption">Horarios disponiveis na Clinica Unique. Quarta manha e quinta tarde. Particular ou convenio AMHP.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ONBOARDING STEPS -->
+<section class="section" id="etapas" style="background:var(--bg-tertiary)">
+  <div class="container">
+    <h2 class="section-title">Tudo O Que Vamos Entregar</h2>
+    <p class="section-sub">A proposta nao e so trafego. E uma estrutura completa de posicionamento, aquisicao e acompanhamento comercial para o Dr. Luiz passar a ser procurado pelo nome.</p>
+
+    <div class="steps-timeline">
+      <div class="step-item" data-step="01">
+        <h4>Diagnostico Comercial &amp; Digital</h4>
+        <p>Analise completa do seu posicionamento, mercado e oportunidades perdidas</p>
+        <span class="agent">CMO</span>
+      </div>
+      <div class="step-item" data-step="02">
+        <h4>BMC / Pesquisa de Marketing</h4>
+        <p>Persona, jornada do paciente, 50+ keywords, comportamento de busca</p>
+        <span class="agent">CMO</span>
+      </div>
+      <div class="step-item" data-step="03">
+        <h4>Analise PESTLE</h4>
+        <p>Fatores macro do mercado de saude em Brasilia</p>
+        <span class="agent">CMO</span>
+      </div>
+      <div class="step-item" data-step="04">
+        <h4>Analise SWOT</h4>
+        <p>Forcas, fraquezas, oportunidades e ameacas mapeadas</p>
+        <span class="agent">CMO</span>
+      </div>
+      <div class="step-item" data-step="05">
+        <h4>Analise de Concorrencia</h4>
+        <p>Benchmark de 5+ concorrentes diretos em ortopedia Brasilia</p>
+        <span class="agent">Growth Hacker</span>
+      </div>
+      <div class="step-item" data-step="06">
+        <h4>Site + Landing Page + Tracking</h4>
+        <p>LP de captacao, GTM, GA4, Pixel Facebook &mdash; tudo configurado</p>
+        <span class="agent">Web Builder</span>
+      </div>
+      <div class="step-item" data-step="07">
+        <h4>Metricas Baseline</h4>
+        <p>Coleta de metricas iniciais pre-projeto para medir evolucao</p>
+        <span class="agent">Growth Hacker</span>
+      </div>
+      <div class="step-item" data-step="08">
+        <h4>Sprint 90 Dias</h4>
+        <p>Plano de implementacao com fases, KPIs e milestones</p>
+        <span class="agent">CEO</span>
+      </div>
+      <div class="step-item" data-step="09">
+        <h4>ICP / Persona</h4>
+        <p>Perfil ideal do paciente e segmentacao para campanhas</p>
+        <span class="agent">CMO</span>
+      </div>
+      <div class="step-item" data-step="10">
+        <h4>Posicionamento + ID Visual</h4>
+        <p>Identidade visual completa, marca pessoal, tom de voz</p>
+        <span class="agent">Designer</span>
+      </div>
+      <div class="step-item" data-step="11">
+        <h4>Funis de Captacao</h4>
+        <p>Google Ads + Meta Ads + CRM + automacoes de follow-up</p>
+        <span class="agent">Growth Hacker</span>
+      </div>
+      <div class="step-item" data-step="12">
+        <h4>Copy / Conteudo / TSL</h4>
+        <p>12 posts Instagram, roteiros Reels, copy LP, scripts WhatsApp</p>
+        <span class="agent">Content Creator</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pacotes">
+  <div class="container">
+    <h2 class="section-title">Investimento</h2>
+    <p class="section-sub">A recomendacao para o momento do Dr. Luiz e o pacote Essencial: monta o ecossistema, valida a demanda e cria previsibilidade sem inflar a operacao.</p>
+
+    <div class="pricing-section">
+      <div class="pricing-grid">
+        <!-- Starter -->
+        <div class="pricing-card">
+          <h3>Starter</h3>
+          <div class="price">R$ 2.500<span>/mes</span></div>
+          <div class="setup">Setup: R$ 2.500</div>
+          <ul>
+            <li>Diagnostico estrategico inicial</li>
+            <li>Gestao Google Ads + Meta Ads</li>
+            <li>2 Landing Pages</li>
+            <li>Relatorio quinzenal</li>
+            <li>Suporte WhatsApp</li>
+            <li class="no">Social Media</li>
+            <li class="no">CRM + Automacoes</li>
+            <li class="no">Auditoria Comercial</li>
+          </ul>
+          <a href="#" class="btn outline" onclick="return false">Conhecer</a>
+        </div>
+
+        <!-- Essencial -->
+        <div class="pricing-card recommended">
+          <h3>Essencial</h3>
+          <div class="price">R$ 3.500<span>/mes</span></div>
+          <div class="setup">Setup: R$ 5.500 | Midia min: R$ 2.000/mes</div>
+          <ul>
+            <li>Tudo do Starter</li>
+            <li>12 posts/stories iniciais</li>
+            <li>Reuniao mensal estrategica</li>
+            <li>Setup CRM + automacoes</li>
+            <li>Auditoria comercial</li>
+            <li>Treinamento comercial</li>
+            <li class="no">Social media recorrente</li>
+            <li class="no">Captacoes mensais</li>
+          </ul>
+          <a href="#" class="btn gold" onclick="return false">Comecar Agora</a>
+        </div>
+
+        <!-- Crescimento -->
+        <div class="pricing-card">
+          <h3>Crescimento</h3>
+          <div class="price">R$ 5.500<span>/mes</span></div>
+          <div class="setup">Setup: R$ 6.500 | Midia min: R$ 2.000/mes</div>
+          <ul>
+            <li>Tudo do Essencial</li>
+            <li>Social media recorrente</li>
+            <li>2 captacoes mensais</li>
+            <li>12 posts mensais</li>
+            <li>Gestao Instagram</li>
+            <li>Relatorios executivos</li>
+          </ul>
+          <a href="#" class="btn primary" onclick="return false">Conhecer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="logo-text">Pulso</div>
+    <p>Assessoria de Marketing Digital para Clinicas</p>
+    <p style="margin-top:8px;opacity:0.4;font-size:0.75rem">Proposta personalizada para Dr. Luiz Sarmanho &mdash; Maio 2026</p>
+    <a href="#" class="cta-final" onclick="return false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+      Alinhar e Comecar
+    </a>
+  </div>
+</footer>
+
+<script>
+// Intersection Observer for animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.animationPlayState = 'running';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.animate').forEach(el => {
+  el.style.animationPlayState = 'paused';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
